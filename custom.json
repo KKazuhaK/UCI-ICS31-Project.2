@@ -1,0 +1,125 @@
+{
+  "Recruit Training Camp": {
+    "text": "You stand in the dusty training grounds where new recruits learn to use ODM gear.\nDrill Sergeant Keith Shadis is yelling at a group of terrified newcomers.",
+    "moves": {
+      "north": "Interior Wall Research Lab",
+      "east": "Shiganshina District",
+      "south": "Wilderness Outside Wall"
+    },
+    "objects": [{
+        "name": "training dummy",
+        "type": "normal"
+      },
+      {
+        "name": "wooden sword",
+        "type": "normal"
+      }
+    ]
+  },
+  "Soldiers' Barracks": {
+    "text": "Rows of bunk beds fill this sparse room where Survey Corps members rest between missions.\nYou can hear soldiers discussing their next expedition beyond the walls.",
+    "moves": {
+      "south": "Wall Maria Watchtower",
+      "west": "Operation Command Center"
+    },
+    "objects": [{
+      "name": "ODM gear",
+      "type": "equipment"
+    }]
+  },
+  "Wall Maria Watchtower": {
+    "text": "From this high vantage point, you can see for miles beyond the wall.\nA bell stands ready to warn of approaching titans.",
+    "moves": {
+      "north": "Soldiers' Barracks",
+      "south": "Titan Lair"
+    },
+    "objects": [{
+      "name": "spyglass",
+      "type": "tool"
+    }]
+  },
+  "Wilderness Outside Wall": {
+    "text": "You've ventured beyond the safety of Wall Maria. Open grasslands stretch before you.\nEvery shadow and movement makes your heart race. Titans could appear at any moment.",
+    "moves": {
+      "north": "Recruit Training Camp",
+      "east": "Titan Forest"
+    }
+  },
+  "Titan Forest": {
+    "text": "Massive trees tower around you, their trunks wider than houses.\nThis forest is used by the Survey Corps for titan capture operations using ODM gear.",
+    "moves": {
+      "north": "Shiganshina District",
+      "east": "Titan Lair",
+      "west": "Wilderness Outside Wall",
+      "climb": "Wall Maria Watchtower",
+      "tunnel": "Operation Command Center"
+    },
+    "objects": [{
+      "name": "thunder spear",
+      "type": "weapon"
+    }]
+  },
+  "Titan Lair": {
+    "text": "You've stumbled upon a clearing where titans gather. Enormous footprints mark the ground.\nA partially eaten Survey Corps wagon lies abandoned nearby.",
+    "moves": {
+      "north": "Wall Maria Watchtower",
+      "west": "Titan Forest"
+    },
+    "objects": [{
+      "name": "mysterious vial",
+      "type": "consumable"
+    }]
+  },
+  "Eren's Basement": {
+    "text": "Finally, you've found the secret basement. Books and documents revealing the truth about the world lie scattered about.\nThe walls contain more secrets than you ever imagined.",
+    "moves": {
+      "up": "Shiganshina District"
+    },
+    "objects": [{
+      "name": "Grisha's journals",
+      "type": "document"
+    }]
+  },
+  "Interior Wall Research Lab": {
+    "text": "Gleaming equipment and strange devices fill this hidden laboratory.\nExperiments related to titan science are clearly being conducted here by the Military Police.",
+    "moves": {
+      "south": "Recruit Training Camp",
+      "east": "Operation Command Center"
+    },
+    "objects": [{
+      "name": "research notes",
+      "type": "special"
+    }]
+  },
+  "Operation Command Center": {
+    "text": "Maps of the walls and beyond cover large tables. Survey Corps officers are planning the next expedition.\nCommander Erwin stands stoically reviewing strategy documents.",
+    "moves": {
+      "south": "Shiganshina District",
+      "east": "Soldiers' Barracks",
+      "west": "Interior Wall Research Lab",
+      "tunnel": "Titan Forest"
+    },
+    "objects": [{
+      "name": "expedition map",
+      "type": "special"
+    }]
+  },
+  "Shiganshina District": {
+    "text": "The ruined outer district where the first titan attack occurred. Abandoned homes and debris line the streets.\nThe enormous hole in the gate serves as a grim reminder of that fateful day.",
+    "moves": {
+      "north": "Operation Command Center",
+      "south": "Titan Forest",
+      "west": "Recruit Training Camp",
+      "down": "Eren's Basement"
+    },
+    "objects": [{
+        "name": "fallen debris",
+        "type": "normal"
+      },
+      {
+        "name": "abandoned cart",
+        "type": "normal"
+      }
+    ]
+  }
+}
