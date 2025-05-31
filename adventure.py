@@ -108,8 +108,7 @@ def can_access(data, current, direction, inventory):
     if current == "Wall Maria Watchtower" and direction == "north":
         if "ODM gear" not in inventory:
             return False, "You need ODM gear to venture outside the walls!"
-    
-    
+
     # Check if player can climb from the forest to the wall
     if current == "Titan Forest" and direction == "climb":
         if "ODM gear" not in inventory:
@@ -359,7 +358,6 @@ def load_save_data():
 def write_save_data(save_data):
     with open('save.json', 'w') as f:
         json.dump(save_data, f, indent=2, sort_keys=True)
-
 
 if __name__ == '__main__':
     main()
