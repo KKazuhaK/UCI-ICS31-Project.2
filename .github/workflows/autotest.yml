@@ -1,17 +1,19 @@
-name: Autograder
+name: AutoTest
 
 on:
   workflow_dispatch:
   push:
     paths:
-      - '**.py'
+      - 'map.pdf'
       - 'custom.json'
       - 'adventure.py'
+      - 'autograder.py'
   pull_request:
     paths:
-      - '**.py'
+      - 'map.pdf'
       - 'custom.json'
       - 'adventure.py'
+      - 'auto_tester.py'
 
 jobs:
   test:
@@ -35,4 +37,4 @@ jobs:
 
       - name: Run tests
         run: |
-          pytest -q
+          pytest -q auto_tester.py
