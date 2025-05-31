@@ -53,8 +53,7 @@ def main():
         print(f"Welcome back, {username}! Resuming from {current_location} with {len(inventory)} items.")
     else:
         # Either new player or player who has won - start at random location
-        possible_starts = [loc for loc in data.keys() if loc != FINISH]
-        current_location = random.choice(possible_starts)
+        current_location = random.choice([loc for loc in data.keys() if loc != FINISH])
         
         if username in save_data:
             # Player has won before, start at new random location
@@ -109,7 +108,9 @@ def take_item(data, current, item_name, inventory):
     if 'objects' not in data[current]:
         return False
     
-    for i, obj in enumerate(data[current]['objects']):
+    # Loop through objects in location, find requested item by name, and pick it up if possible
+    for i in range(len(data[current]['objects'])):
+        obj = data[current]['objects'][i]
         if obj['name'].lower() == item_name.lower():
             if obj['type'] in PICKABLE_TYPES:
                 inventory.append(obj['name'])
@@ -150,7 +151,7 @@ def play_game(data, username, current, inventory=None, game_state=None, is_new_u
     print('\nWelcome to the Attack on Titan Adventure Game:')
     print('Your mission: Explore the world, find Grisha\'s journals, and discover the truth in Eren\'s Basement.')
     
-    # Show help for new users
+    # First help section for new users
     if is_new_user:
         print("\n" + SEPARATOR)
         print("HOW TO PLAY")
@@ -159,6 +160,7 @@ def play_game(data, username, current, inventory=None, game_state=None, is_new_u
         print("  [direction] - Move in that direction (e.g., north, south)")
         print("  special directions - Some locations have special moves (climb, tunnel)")
         print("  pickup - Pick up all items in the room")
+        print("  look - Examine your current location again")
         print("  inventory - Check your items")
         print("  help - Show this help information")
         print("  exit/quit - Exit the game")
@@ -186,6 +188,7 @@ def play_game(data, username, current, inventory=None, game_state=None, is_new_u
     while not game_over:
         # Check victory condition
         has_won = current == FINISH and "Grisha's journals" in inventory
+
         if has_won:
             print(SEPARATOR)
             print("YOU WON AND FIND THE TRUTH!")
@@ -194,8 +197,7 @@ def play_game(data, username, current, inventory=None, game_state=None, is_new_u
             print("You now understand the truth about the world beyond the walls!")
             
             game_state["won"] = True
-            save_game(username, current, inventory, game_state)
-            
+            save_game(username, current, inventory, game_state, data)
             game_over = True
             continue
         elif current == FINISH:
@@ -263,6 +265,7 @@ def play_game(data, username, current, inventory=None, game_state=None, is_new_u
             print("  [direction] - Move in that direction (e.g., north, south)")
             print("  special directions - Some locations have special moves (climb, tunnel)")
             print("  pickup - Pick up all items in the room")
+            print("  look - Examine your current location again")
             print("  inventory - Check your items")
             print("  help - Show this help information")
             print("  exit/quit - Exit the game")
@@ -288,32 +291,19 @@ def play_game(data, username, current, inventory=None, game_state=None, is_new_u
                 print("ITEM COLLECTION")
                 print(SEPARATOR)
                 
-                # Separate objects to keep and items to take
-                keep_objects = []
-                items_taken = []
-
-                for obj in data[current]['objects'][:]:
+                # Find first pickable item
+                picked_up = False
+                for i, obj in enumerate(data[current]['objects']):
                     if obj['type'] in PICKABLE_TYPES:
-                        items_taken.append(obj['name'])
-                        inventory.append(obj['name'])
-                    else:
-                        keep_objects.append(obj)
+                        # Pick up only this one item
+                        item_name = obj['name']
+                        inventory.append(item_name)
+                        data[current]['objects'].pop(i)
+                        picked_up = True
                         
-                # Update room objects
-                data[current]['objects'] = keep_objects
-                save_game(username, current, inventory, game_state, data)  # 添加这行
-                
-                # Display what was picked up
-                if items_taken:
-                    if len(items_taken) == 1:
-                        print(f"You picked up: {items_taken[0]}")
-                    else:
-                        print("You picked up:")
-                        for item in items_taken:
-                            print(f"- {item}")
-        
-                    # Special item interactions
-                    for item_name in items_taken:
+                        print(f"You picked up: {item_name}")
+                        
+                        # Special item interactions
                         if item_name.lower() == "odm gear":
                             print("With this gear, you can now travel beyond the walls!")
                         elif item_name.lower() == "thunder spear":
@@ -322,13 +312,23 @@ def play_game(data, username, current, inventory=None, game_state=None, is_new_u
                             print("You feel a strange power emanating from this vial...")
                         elif item_name.lower() == "expedition map":
                             print("This detailed map will help you navigate hidden paths!")
-                else:
+                        
+                        save_game(username, current, inventory, game_state, data)
+                        break
+                
+                if not picked_up:
                     print("There are no special items to pick up here.")
             else:
                 print("EMPTY ROOM")
                 print(SEPARATOR)
                 print("There is nothing here to pick up.")
-                
+    
+            display_location(data, current)
+            
+        # Handle look command
+        elif command[0] == 'look':
+            print("LOCATION DETAILS")
+            print(SEPARATOR)
             display_location(data, current)
             
         # Handle invalid commands
@@ -354,6 +354,8 @@ def save_game(username, location, inventory, game_state=None, world_data=None):
         for location_name, location_data in world_data.items():
             if 'objects' in location_data:
                 picked_up_objects[location_name] = location_data['objects']
+            if 'moves' in location_data:
+                custom_paths[location_name] = location_data['moves']
     
     # Create save data structure
     save_data[username] = {

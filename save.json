@@ -1,0 +1,95 @@
+{
+  "Test": {
+    "custom_paths": {
+      "Eren's Basement": {
+        "up": "Shiganshina District"
+      },
+      "Interior Wall Research Lab": {
+        "east": "Operation Command Center",
+        "south": "Recruit Training Camp"
+      },
+      "Operation Command Center": {
+        "east": "Soldiers' Barracks",
+        "south": "Shiganshina District",
+        "tunnel": "Titan Forest",
+        "west": "Interior Wall Research Lab"
+      },
+      "Recruit Training Camp": {
+        "east": "Shiganshina District",
+        "north": "Interior Wall Research Lab",
+        "south": "Wilderness Outside Wall"
+      },
+      "Shiganshina District": {
+        "down": "Eren's Basement",
+        "north": "Operation Command Center",
+        "south": "Titan Forest",
+        "west": "Recruit Training Camp"
+      },
+      "Soldiers' Barracks": {
+        "south": "Wall Maria Watchtower",
+        "west": "Operation Command Center"
+      },
+      "Titan Forest": {
+        "climb": "Wall Maria Watchtower",
+        "east": "Titan Lair",
+        "north": "Shiganshina District",
+        "tunnel": "Operation Command Center",
+        "west": "Wilderness Outside Wall"
+      },
+      "Titan Lair": {
+        "north": "Wall Maria Watchtower",
+        "west": "Titan Forest"
+      },
+      "Wall Maria Watchtower": {
+        "north": "Soldiers' Barracks",
+        "south": "Titan Lair"
+      },
+      "Wilderness Outside Wall": {
+        "east": "Titan Forest",
+        "north": "Recruit Training Camp"
+      }
+    },
+    "game_state": {
+      "won": true
+    },
+    "inventory": [
+      "mysterious vial",
+      "spyglass",
+      "thunder spear",
+      "expedition map",
+      "ODM gear",
+      "research notes",
+      "Grisha's journals"
+    ],
+    "location": "Eren's Basement",
+    "picked_up_objects": {
+      "Eren's Basement": [],
+      "Interior Wall Research Lab": [],
+      "Operation Command Center": [],
+      "Recruit Training Camp": [
+        {
+          "name": "training dummy",
+          "type": "normal"
+        },
+        {
+          "name": "wooden sword",
+          "type": "normal"
+        }
+      ],
+      "Shiganshina District": [
+        {
+          "name": "fallen debris",
+          "type": "normal"
+        },
+        {
+          "name": "abandoned cart",
+          "type": "normal"
+        }
+      ],
+      "Soldiers' Barracks": [],
+      "Titan Forest": [],
+      "Titan Lair": [],
+      "Wall Maria Watchtower": []
+    }
+  }
+}
