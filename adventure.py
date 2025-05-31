@@ -102,11 +102,6 @@ def describe(data, current):
         description += f"\n'{move}' to go to {destination}"
     
     return description
-
-def take_item(data, current, item_name, inventory):
-    # Handles picking up a specific item
-    if 'objects' not in data[current]:
-        return False
     
     # Loop through objects in location, find requested item by name, and pick it up if possible
     for i in range(len(data[current]['objects'])):

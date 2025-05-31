@@ -49,22 +49,25 @@
         "north": "Recruit Training Camp"
       }
     },
-    "game_state": {
-      "won": true
-    },
+    "game_state": {},
     "inventory": [
-      "mysterious vial",
-      "spyglass",
-      "thunder spear",
       "expedition map",
-      "ODM gear",
-      "research notes",
-      "Grisha's journals"
+      "thunder spear"
     ],
-    "location": "Eren's Basement",
+    "location": "Titan Forest",
     "picked_up_objects": {
-      "Eren's Basement": [],
-      "Interior Wall Research Lab": [],
+      "Eren's Basement": [
+        {
+          "name": "Grisha's journals",
+          "type": "document"
+        }
+      ],
+      "Interior Wall Research Lab": [
+        {
+          "name": "research notes",
+          "type": "special"
+        }
+      ],
       "Operation Command Center": [],
       "Recruit Training Camp": [
         {
@@ -86,10 +89,25 @@
           "type": "normal"
         }
       ],
-      "Soldiers' Barracks": [],
+      "Soldiers' Barracks": [
+        {
+          "name": "ODM gear",
+          "type": "equipment"
+        }
+      ],
       "Titan Forest": [],
-      "Titan Lair": [],
-      "Wall Maria Watchtower": []
+      "Titan Lair": [
+        {
+          "name": "mysterious vial",
+          "type": "consumable"
+        }
+      ],
+      "Wall Maria Watchtower": [
+        {
+          "name": "spyglass",
+          "type": "tool"
+        }
+      ]
     }
   }
 }
