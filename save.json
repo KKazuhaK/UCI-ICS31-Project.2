@@ -49,25 +49,20 @@
         "north": "Recruit Training Camp"
       }
     },
-    "game_state": {},
+    "game_state": {
+      "won": true
+    },
     "inventory": [
       "expedition map",
-      "thunder spear"
+      "thunder spear",
+      "research notes",
+      "ODM gear",
+      "Grisha's journals"
     ],
-    "location": "Titan Forest",
+    "location": "Eren's Basement",
     "picked_up_objects": {
-      "Eren's Basement": [
-        {
-          "name": "Grisha's journals",
-          "type": "document"
-        }
-      ],
-      "Interior Wall Research Lab": [
-        {
-          "name": "research notes",
-          "type": "special"
-        }
-      ],
+      "Eren's Basement": [],
+      "Interior Wall Research Lab": [],
       "Operation Command Center": [],
       "Recruit Training Camp": [
         {
@@ -89,12 +84,7 @@
           "type": "normal"
         }
       ],
-      "Soldiers' Barracks": [
-        {
-          "name": "ODM gear",
-          "type": "equipment"
-        }
-      ],
+      "Soldiers' Barracks": [],
       "Titan Forest": [],
       "Titan Lair": [
         {

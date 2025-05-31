@@ -102,20 +102,6 @@ def describe(data, current):
         description += f"\n'{move}' to go to {destination}"
     
     return description
-    
-    # Loop through objects in location, find requested item by name, and pick it up if possible
-    for i in range(len(data[current]['objects'])):
-        obj = data[current]['objects'][i]
-        if obj['name'].lower() == item_name.lower():
-            if obj['type'] in PICKABLE_TYPES:
-                inventory.append(obj['name'])
-                data[current]['objects'].pop(i)
-                return True
-            else:
-                print("You can't pick that up.")
-                return False
-    
-    return False
 
 def can_access(data, current, direction, inventory):
     # Checks if player can access a direction based on inventory requirements
